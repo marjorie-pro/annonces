@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,11 +16,11 @@ class UserController extends Controller
      */
     public function __construct()
     {
-         $this->middleware('users');
+         
     }
     public function index()
     {
-        return view('layouts.user');
+        
     }
 
     /**
@@ -27,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-            dd(User::create ($request->all ()));
+           
     }
 
     /**
@@ -36,10 +39,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-                User::create ($request->all ());
-        return back ()->with ('ok', __('Your message has been recorded, we will respond as soon as possible.'));
+        $name = $request->input('name');
     }
 
     /**
@@ -50,7 +52,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-         return view('edit');
+        
     }
 
     /**
@@ -87,5 +89,20 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showEdit(){
+        $user = Auth::user();
+        return view('update');
+    }
+
+    public function editProfile(Request $request){
+        $id = Auth::id();
+        $user = \App\User::find($id);
+        $user->name = $request->input('name');
+        $user->save();
+
+        return back();
+    //     return view('update');
     }
 }

@@ -40,11 +40,23 @@ class AnnonceController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'price' => 'required',
         ]);
+
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $request->image = $filename;
+        }
+        else {
+            echo "heu erreur là";
+        }
    
         Annonce::create($request->all());
+
+        $ann->save();
     
         return \Redirect::to('annonces')
        ->with('success','Greate! Annonce created successfully.');

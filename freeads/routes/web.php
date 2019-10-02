@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('index', 'IndexController@showIndex')->name('home');
@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 Route::resource('users', 'UserController');
 
-    Route::name('users.create')->get('users', 'layouts\UserController@create');
-    Route::name('users.store')->post('users', 'layouts\UserController@store');
+Route::get('edit/profile', 'UserController@showEdit')->name('show.edit');
+Route::post('edit', 'UserController@editProfile')->name('edit');
 
 Route::resource('annonces','AnnonceController');
