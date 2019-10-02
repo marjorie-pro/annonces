@@ -5,8 +5,8 @@
 	<title>Freeads</title>
 </head>
 <body>
-	<h1>Hello</h1>
-	<p>Vous êtes sur la page d'accueil</p>
+	<h2>Hello</h2>
+	<p>Vous êtes sûrement sur la page d'accueil</p>
 
 </body>
 </html>

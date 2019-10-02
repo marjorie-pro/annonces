@@ -11,9 +11,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+         $this->middleware('users');
+    }
     public function index()
     {
-        //
+        return view('layouts.user');
     }
 
     /**
@@ -23,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+            dd(User::create ($request->all ()));
     }
 
     /**
@@ -32,9 +36,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+                User::create ($request->all ());
+        return back ()->with ('ok', __('Your message has been recorded, we will respond as soon as possible.'));
     }
 
     /**
@@ -45,7 +50,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+         return view('edit');
     }
 
     /**
@@ -56,7 +61,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        //  $user = Auth::user();
+        // return view('layouts.edit', compact('user'));
+        
     }
 
     /**
@@ -68,7 +75,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

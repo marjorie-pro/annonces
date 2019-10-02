@@ -21,9 +21,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::resource('user', 'UserController');
-// Route::middleware('auth','verified')->group(function(){
-// 	Route::resource('profile','UserController',['only'=>['edit','update','destroy','show']]);
+Route::resource('users', 'UserController');
 
-// });
+    Route::name('users.create')->get('users', 'layouts\UserController@create');
+    Route::name('users.store')->post('users', 'layouts\UserController@store');
 
+Route::resource('annonces','AnnonceController');
