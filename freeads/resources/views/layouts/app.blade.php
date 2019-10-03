@@ -60,6 +60,12 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('show.edit') }}">
+                                        {{ __('Modifier le profil') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('annonces.list') }}">
+                                        {{ __('Annonces') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

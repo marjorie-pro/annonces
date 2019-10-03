@@ -7,6 +7,6 @@
 <body>
 	<h2>Hello</h2>
 	<p>Vous êtes sûrement sur la page d'accueil</p>
-
+	<a href="{{ route('home') }}">Retour à Laravel</a>
 </body>
 </html>

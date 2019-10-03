@@ -12,7 +12,11 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label>Modifies ton nom : </label><input name="name" value="{{ Auth::user()->name}}" for="name" class="col-md-4 col-form-label text-md-right">
+                            <div><label>Modifies ton nom : </label><input name="name" value="{{ Auth::user()->name}}" for="name" class="col-md-4 col-form-label text-md-right"></div>
+
+                            <div><label>Modifies ton email : </label><input name="email" value="{{ Auth::user()->email}}" for="email" class="col-md-4 col-form-label text-md-right"></div>
+                            <div><label>Modifies ton password : </label><input name="password" value="{{ Auth::user()->password}}" for="password" class="col-md-4 col-form-label text-md-right"></div>
+                            <input type="submit" value="Modifier">
                         </div>
                     </form>
                 </div>

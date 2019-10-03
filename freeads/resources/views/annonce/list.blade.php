@@ -16,7 +16,8 @@
         <div class="card-body">
          <div class="row">
           <div class="col-12">
-
+            <input type="text" name="search" placeholder="rechercher..."><br>
+            <input type="submit" value="Rechercher">
             <table class="table table-bordered" id="laravel_crud">
              <thead>
               <tr>
@@ -38,7 +39,8 @@
              <td>{{ $annonce->price }}</td>
              <td>{{ date('Y-m-d', strtotime($annonce->created_at)) }}</td>
              <td><a href="{{ route('annonces.edit',$annonce->id)}}" class="btn btn-primary">Edit</a></td>
-             <td>
+             <td>();
+
                <form action="{{ route('annonces.destroy', $annonce->id)}}" method="post">
                 {{ csrf_field() }}
                 @method('DELETE')

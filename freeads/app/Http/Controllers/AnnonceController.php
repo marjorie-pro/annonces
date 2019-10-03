@@ -122,4 +122,17 @@ class AnnonceController extends Controller
    
         return \Redirect::to('annonces')->with('success','Annonce deleted successfully');
     }
+
+    public function search(){
+        $search = $request->input('search');
+
+    }
+    public function filter(){
+        $annonce = collect([1,2,3,4]);
+
+        $filtered = $collection->filter(function($value, $key){
+            return $value > 2;
+        });
+        $filtered->all;
+    }
 }

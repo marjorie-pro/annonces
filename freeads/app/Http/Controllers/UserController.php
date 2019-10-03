@@ -6,6 +6,7 @@ use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -100,6 +101,10 @@ class UserController extends Controller
         $id = Auth::id();
         $user = \App\User::find($id);
         $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $pass = Hash::make($request->input('password'));
+        $user->password = $request->$pass;
+
         $user->save();
 
         return back();
