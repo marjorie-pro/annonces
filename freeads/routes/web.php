@@ -22,10 +22,10 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::resource('users', 'UserController');
-
 Route::get('edit/profile', 'UserController@showEdit')->name('show.edit');
-Route::post('edit', 'UserController@editProfile')->name('edit');
+Route::post('edit/profile', 'UserController@editProfile')->name('edit');
 
 
 Route::resource('annonces','AnnonceController');
 Route::get('annonces', 'AnnonceController@index')->name('annonces.list');
+

@@ -11,7 +11,7 @@
                 <div class="card-header">Modification annonce</div>
 
                 <div class="card-body">
-                    <form action="{{ route('annonces.update', $annonce_info->id) }}" method="POST" name="update_product">
+                    <form action="{{ route('annonces.update', $annonce_info->id) }}" method="POST" name="update_product" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @method('PATCH')
 
@@ -33,7 +33,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <strong>Image</strong>
-                                    <input type="file" class="form-control" col="4" name="image" value="{{ $annonce_info->image }}">
+                                    <input type="file" class="form-control" col="4" name="image" value="{{ $annonce_info->image }}" multiple>
                                     <span class="text-danger">{{ $errors->first('image') }}</span>
                                 </div>
                             </div>

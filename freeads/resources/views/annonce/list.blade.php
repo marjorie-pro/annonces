@@ -26,7 +26,7 @@
                <th>Description</th>
                <th>Image</th>
                <th>price</th>
-               <td colspan="2">Action</td>
+               <td colspan="3" align="center">Actions</td>
              </tr>
            </thead>
            <tbody>
@@ -35,11 +35,11 @@
              <td>{{ $annonce->id }}</td>
              <td>{{ $annonce->title }}</td>
              <td>{{ $annonce->description }}</td>
-             <td>{{ $annonce->image }}</td>
+             <td><img src="{{ $annonce->image }}"></td>
              <td>{{ $annonce->price }}</td>
              <td>{{ date('Y-m-d', strtotime($annonce->created_at)) }}</td>
              <td><a href="{{ route('annonces.edit',$annonce->id)}}" class="btn btn-primary">Edit</a></td>
-             <td>();
+             <td>
 
                <form action="{{ route('annonces.destroy', $annonce->id)}}" method="post">
                 {{ csrf_field() }}

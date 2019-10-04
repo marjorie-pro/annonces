@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-         
+         $this->middleware('auth');
     }
     public function index()
     {
@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->input('name');
+        // $name = $request->input('name');
     }
 
     /**
@@ -103,7 +103,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $pass = Hash::make($request->input('password'));
-        $user->password = $request->$pass;
+        $user->password = $pass;
 
         $user->save();
 
