@@ -40,56 +40,13 @@ class AnnonceController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required',
             'price' => 'required',
         ]);
-
- 
- 
-
-    //     if($request->hasfile('image')){
-    //     $file = array('image' => Input::file('image'));
-    //     $destinationPath = 'image/'; // upload path
-    //     $extension = Input::file('image')->getClientOriginalExtension(); 
-    //     $fileName = rand(11111,99999).'.'.$extension; // renaming image
-    //     Input::file('image')->move($destinationPath, $fileName);
-    // }
-    // else{
-    //     echo "Please Upload Your Profile Image!";
-    
-           
-    //        // $path = $request->file('image')->store('image');
-    //        // return $path;
-    //     }
-
-
-        // if($request->hasfile('image')){
-        //    foreach ($request->file('image') as $image) {
-        //        $name=$image->getClientOriginalName();
-        //         $image->move(public_path().'/images/', $name);  
-        //         $data[] = $name;
-        //    }
-        // }
-        // else {
-        //     echo "heu erreur là";
-        // }
-
-        // if($request->hasfile('image')){
-        //     $file = $request->file('image');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = time().'.'.$extension;
-        //     $request->image = $filename;
-        // }
-        // else {
-        //     echo "heu erreur là";
-        // }
    
         Annonce::create($request->all());
 
-        $ann->save();
-    
-        return \Redirect::to('annonces')
-       ->with('success','Greate! Annonce created successfully.');
+        return redirect('annonces');
     }
 
     /**
@@ -138,18 +95,8 @@ class AnnonceController extends Controller
         $update = ['title' => $request->title, 'description' => $request->description,'image' => str_replace('public', 'storage', $file),'price' => $request->price];
         Annonce::where('id',$id)->update($update);
 
-       // $file = $request->file('image')->store('images');
-
-       // dd($file);
-       // $path = storage_path('public/'. $file);
-       // dd($file);
-       // $path = $file->store('/images');
-       // $path = $request->photo->store('images');
-       // dd($_FILES['image']['tmp_name']);
-        // dd($file);
         
-        return \Redirect::to('annonces')
-       ->with('success','Great! Annonce updated successfully');
+       return redirect('annonces');
     }
 
     /**
@@ -162,7 +109,7 @@ class AnnonceController extends Controller
     {
         Annonce::where('id',$id)->delete();
    
-        return \Redirect::to('annonces')->with('success','Annonce deleted successfully');
+        return redirect('annonces');
     }
 
     public function search(){

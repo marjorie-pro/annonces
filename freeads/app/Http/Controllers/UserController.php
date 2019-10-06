@@ -102,6 +102,7 @@ class UserController extends Controller
         $user = \App\User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        
         $pass = Hash::make($request->input('password'));
         $user->password = $pass;
 

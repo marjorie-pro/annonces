@@ -5,7 +5,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-
+<a href="{{ route('home') }}">Retour à l'accueil</a>
    
      <div class="card">
           
@@ -15,7 +15,7 @@
 
         <div class="card-body">
          <div class="row">
-          <div class="col-12">
+          <div class="col-lg-12">
             <input type="text" name="search" placeholder="rechercher..."><br>
             <input type="submit" value="Rechercher">
             <table class="table table-bordered" id="laravel_crud">
@@ -35,7 +35,7 @@
              <td>{{ $annonce->id }}</td>
              <td>{{ $annonce->title }}</td>
              <td>{{ $annonce->description }}</td>
-             <td><img src="{{ $annonce->image }}"></td>
+             <td><img src="{{ $annonce->image }}" width="40%" height="40%" ></td>
              <td>{{ $annonce->price }}</td>
              <td>{{ date('Y-m-d', strtotime($annonce->created_at)) }}</td>
              <td><a href="{{ route('annonces.edit',$annonce->id)}}" class="btn btn-primary">Edit</a></td>

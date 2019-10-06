@@ -28,4 +28,3 @@ Route::post('edit/profile', 'UserController@editProfile')->name('edit');
 
 Route::resource('annonces','AnnonceController');
 Route::get('annonces', 'AnnonceController@index')->name('annonces.list');
-
